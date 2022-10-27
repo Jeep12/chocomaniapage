@@ -1,0 +1,17 @@
+a {
+    text-decoration: none;
+}
+header {
+    width: 100%;
+    display: flex;
+    background-color: #ECECEC;
+    flex-direction: row;
+    justify-content: space-around;
+}
+header div {
+    padding: 10px;
+}
+nav {
+    border-bottom: 2px solid rgb(167, 167, 167);
+
+}

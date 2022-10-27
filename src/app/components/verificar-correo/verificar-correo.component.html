@@ -1,0 +1,21 @@
+
+ <div class="wrapper">
+      <div class="bodyForm" >
+          <img src="../../../assets/images/imgLogin.png" alt="">
+          <br>
+          <h6>Se le ha enviado un email a su casilla de correo para verificar su cuenta</h6>
+          <input class="showEmail" type="text" readonly value="userMail" [(ngModel)]="userMail">
+          <br>
+          <div  class="alert alert-warning" role="alert">
+
+            <i class="fa-sharp fa-solid fa-circle-info"></i>&nbsp;&nbsp; Es posible que el Email se almacene en la casilla de Spams
+          </div>
+  
+        
+   
+        
+            <button class="btnVerificar" [routerLink]="['/login']" >Volver</button>
+      </div>
+      <br>
+      
+  </div>
