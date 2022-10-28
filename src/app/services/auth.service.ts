@@ -4,18 +4,21 @@ import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { ToastrService } from 'ngx-toastr';
 import { FireBaseErrorService } from './fire-base-error.service';
+import firebase from "firebase/compat/app";
+import "firebase/compat/auth";
+import { User } from '../Interfaces/User';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  userMail: string | null | undefined; 
+  userMail: string | null | undefined;
   constructor(
     private afAuth: AngularFireAuth,
     private router: Router,
     private toastr: ToastrService,
     private fireBaseError: FireBaseErrorService,
-    private cookies:CookieService
+    private cookies: CookieService
   ) {
     this.afAuth.authState.subscribe(user => {
       this.userMail = user?.email;
@@ -54,8 +57,16 @@ export class AuthService {
       if (user.user?.emailVerified) {
         this.toastr.success("Bienvenido");
         this.router.navigate(['/dashboard']);
-        let name:any = user.user.email;
-        this.cookies.set('userMail',name);
+        let displayName:User | any = user.user.displayName;
+        let email:User | any = user.user.email;
+        let uid:User | any = user.user.uid;
+        let image:User | any = user.user.photoURL;
+
+        this.cookies.set('uid', uid);
+        this.cookies.set('image', image);
+        this.cookies.set('name', displayName);
+        this.cookies.set('userMail', email);
+        console.log(user);
 
       } else {
         console.log(user);
@@ -83,21 +94,48 @@ export class AuthService {
     this.afAuth.signOut().then(() => {
       this.router.navigate(['/login']);
       this.cookies.delete('userMail');
-
+      this.cookies.delete('uid');
+      this.cookies.delete('image');
+      this.cookies.delete('name');
     })
   }
   //SI ESTA LOGEADO
   isLogged(): boolean {
-    if (this.userMail != null || this.userMail != undefined ) {
-   
+    if (this.userMail != null || this.userMail != undefined) {
+
       return true;
-    } else { 
-      return false; 
+    } else {
+      return false;
     }
   }
   loginWithGoogle() {
+    return firebase.auth().signInWithPopup(new firebase.auth.GoogleAuthProvider).then(res => {
+      localStorage.setItem('token', JSON.stringify(res.user?.uid));
+      let displayName:User | any = res.user?.displayName;
+      let email:User | any = res.user?.email;
+      let uid:User | any = res.user?.uid;
+      let image:User | any = res.user?.photoURL;
 
+      this.cookies.set('uid', uid);
+      this.cookies.set('image', image);
+      this.cookies.set('name', displayName);
+      this.cookies.set('userMail', email);
+
+      this.router.navigate(['/']);
+    }, err => {
+      alert(err.message);
+    })
   }
+  loginWithFacebook(){
+    return firebase.auth().signInWithPopup(new firebase.auth.FacebookAuthProvider).then(res =>{
+        localStorage.setItem('token',JSON.stringify(res.user?.uid));
+        this.router.navigate(['/']);
+
+    },err=>{
+        alert(err.message);
+    })
+}
+
 
 
 

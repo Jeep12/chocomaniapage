@@ -22,6 +22,7 @@ import { FireBaseErrorService } from './services/fire-base-error.service';
 import { AuthService } from './services/auth.service';
 import { AuthGuardian } from './utils/auth-guardian';
 import { CookieService } from 'ngx-cookie-service';
+import { LoadScriptsService } from './services/load-scripts.service';
 
 
 @NgModule({
@@ -51,7 +52,8 @@ import { CookieService } from 'ngx-cookie-service';
     FireBaseErrorService,
     AuthService,
     AuthGuardian,
-    CookieService
+    CookieService,
+    LoadScriptsService
   ],
   bootstrap: [AppComponent]
 })
