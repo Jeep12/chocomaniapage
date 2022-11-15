@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { FireBaseErrorService } from './fire-base-error.service';
+import { UsuariosService } from './usuarios.service';
 
-describe('FireBaseErrorService', () => {
-  let service: FireBaseErrorService;
+describe('UsuariosService', () => {
+  let service: UsuariosService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(FireBaseErrorService);
+    service = TestBed.inject(UsuariosService);
   });
 
   it('should be created', () => {

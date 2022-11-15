@@ -1,1 +1,54 @@
 /* You can add global styles to this file, and also import other style files */
+body::-webkit-scrollbar {
+    width: 12px;
+}
+
+body::-webkit-scrollbar-track {
+    background: white;
+}
+
+body::-webkit-scrollbar-thumb {
+    background: #b96e0b;
+    border-radius: 2px;
+}
+@font-face {
+    font-family: "Chocomania1";
+    src: url("assets/fonts/Chocomania1.otf");
+}
+@font-face {
+    font-family: "Chocomania2";
+    src: url("assets/fonts/chocomania2.otf");
+}
+@font-face {
+    font-family: "Chocomania3";
+    src: url("assets/fonts/GoodFaster.otf");
+}
+@font-face {
+  font-family: "Gamer1";
+  src: url("assets/fonts/pdark.ttf");
+}
+
+@font-face {
+  font-family: "Gamer2";
+  src: url("assets/fonts/MachineGunk-nyqg.ttf");
+}
+
+@font-face {
+  font-family: "Gamer6";
+  src: url("assets/fonts/bandera.ttf");
+}
+
+@font-face {
+  font-family: "Gamer3";
+  src: url("assets/fonts/GALSB.ttf");
+}
+
+@font-face {
+  font-family: "Gamer4";
+  src: url("assets/fonts/Kwajong-BVRG.ttf");
+}
+
+@font-face {
+  font-family: "Gamer5";
+  src: url("assets/fonts/ReactiveAnchor-L3L0n.ttf");
+}

@@ -21,7 +21,7 @@ export class RegistrarUsuarioComponent implements OnInit {
 
 
   ) {
-    //registeUsers tiene que hacer match con la directiva [formGroud]="registerUsers", 
+    //registeUsers tiene que hacer match con la directiva [formGroud]="registerUsers",
     this.registerUsers = this.fb.group({
       email: ['', Validators.required],
       password: ['', Validators.required],
@@ -42,7 +42,7 @@ export class RegistrarUsuarioComponent implements OnInit {
       this.toastr.error("Debe llenar los campos");
     } else {
       if (password == repeatPassword) {
-        this.authService.register(email,password)
+        this.authService.register(email,password);
       } else {
         this.toastr.error("Las contraseñas no coinciden")
       }

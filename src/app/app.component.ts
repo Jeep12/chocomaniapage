@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { UsuariosService } from './services/usuarios.service';
 
 @Component({
   selector: 'app-root',
@@ -7,6 +9,12 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'login-firebase';
-  
-  
+
+
+  constructor(private afAuth:AngularFireAuth,private usuario:UsuariosService){
+    this.afAuth.authState.subscribe(user=>{
+
+    })
+  }
+
 }

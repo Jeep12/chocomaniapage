@@ -1,63 +1,107 @@
-
-
-
-  
-
-
 <div class="social">
-    <div>REDES SOCIALES</div>
-    <div> SERAH</div>
-    <div>REDESS</div>
+  <div>
+    <ul class="listSocial mt-3">
+      <li class="redes"><i class="fa-brands fa-facebook-f"></i></li>
+      <li class="redes"><i class="fa-brands fa-instagram"></i></li>
+      <li class="redes"><i class="fa-brands fa-youtube"></i></li>&nbsp;&nbsp;
+      <li class="contact"><i class="fa-solid fa-phone"></i>&nbsp;2983 - 402258</li>
+
+    </ul>
+
+
+  </div>
+  <div> </div>
+  <div>
+
+
+  </div>
 </div>
 
-<nav class="navbar navbar-expand-lg bg-light">
+<nav class="navbar navbar-expand-lg navMenu">
   <div class="container-fluid ">
-    <a class="navbar-brand" href="#">Navbar scroll</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+
+
+    &nbsp;&nbsp;&nbsp;
+
+
+    <a class="navbar-brand logo" href="#"
+      >&nbsp;&nbsp;&nbsp; Chocomania</a>
+
+
+
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll"
+      aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
+
+
+
+
+
     <div class="collapse navbar-collapse " id="navbarScroll">
       <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll listNav" style="--bs-scroll-height: 150px; ;">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
+        <li class="nav-item"  [routerLink]="['/dashboard']">
+          <a class="nav-link " aria-current="page" [routerLink]="['/dashboard']">Inicio</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
+          <a class="nav-link"  [routerLink]="['/contacto']">Contacto</a>
         </li>
-        <li class="nav-item dropdown">
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/products']">ProduCtos</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" (click)="pruebaheader()">Prueba</a>
+        </li>
+        <li class="nav-item dropdown drop">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Link
+            Events
           </a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
+            <li><a class="dropdown-item" href="#">Gallery 1</a></li>
+            <li><a class="dropdown-item" href="#">Gallery 2</a></li>
+
+
           </ul>
         </li>
-        <li class="nav-item">
-          <a class="nav-link disabled">Link</a>
-        </li>
+
+
+
+
       </ul>
-      <form class="d-flex mt-5" role="search">
-        <button class="btn btn-outline-success" [routerLink]="['/login']" *ngIf="islogged()==false">Ingresar</button>&nbsp;&nbsp;
-        <button class="btn btn-outline-success" [routerLink]="['/registrar-usuario']" *ngIf="islogged()==false">Registrarse</button>&nbsp;&nbsp;
-        <div class="nav-item dropdown " style="margin-right:150px;" *ngIf="islogged()==true">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            <img [src]="image" class="imgPerfil">
-           
-          </a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><hr class="dropdown-divider"></li>
-            
-            <li><a class="dropdown-item" (click)="logout()">Salir</a></li>
+      <!-- CARRITO DE COMPRAS -->
+      <a style="padding-right: 4px;" type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+        <i class="fa-solid fa-cart-shopping" style="font-size: 20px;color:#737373;"></i>
+      </a>
+      <!-- PANEL DE USUARIO,  -->
+      <div class="d-flex " style="border-left: 1px solid;">
+        <button class="btn " [routerLink]="['/login']" *ngIf="islogged()==false">Ingresar</button>
+        &nbsp;&nbsp;
+        <button class="btn " [routerLink]="['/registrar-usuario']" *ngIf="islogged()==false">Registrarse</button>
+        &nbsp;&nbsp;&nbsp;
+
+
+
+        <div class="dropdown drop" style="margin-right:150px;" *ngIf="islogged()==true">
+          <a class="nav-link dropdown-toggle prueba" href="#" role="button" data-bs-toggle="dropdown"
+            aria-expanded="false">Panel </a>
+
+          <ul class="dropdown-menu dropPerfil ">
+            <li><a class="dropdown-item" href="#" *ngIf="usuario.data.access !== 0">Control</a></li>
+            <li><a class="dropdown-item" href="#">Mi perfil</a></li>
+            <li><a class="dropdown-item" href="#"></a></li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li><a class="dropdown-item" role="button" (click)="logout()">Salir</a></li>
           </ul>
         </div>
-        <p></p>
-        <p></p>
-      </form>
+
+      </div>
     </div>
   </div>
 </nav>
+
+
+<app-modal-cart></app-modal-cart>

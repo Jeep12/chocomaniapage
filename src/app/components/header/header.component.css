@@ -20,27 +20,136 @@
     --danger: #dc3545;
     --light: #f8f9fa;
     --dark: #343a40;
-    --breakpoint-xs: 0;
-    --breakpoint-sm: 576px;
-    --breakpoint-md: 768px;
-    --breakpoint-lg: 992px;
-    --breakpoint-xl: 1200px;
+
     --font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
-.social{
+
+.social {
+    background-color: #ECECEC;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    font-family:SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
     justify-content: space-around;
+    min-height: 60px;
+    align-items: center;
+
 }
+.contact {
+    color:black;
+}
+
 .social div {
     text-align: center;
 }
+
+.redes {
+    color:#b96e0b;
+    font-size: 20px;
+}
+
+.redes:hover {
+    background-color: white;
+    color: #b96e0b;
+    border-radius: 5px;
+}
+
+.social div ul li {
+    display: inline-block;
+    list-style: none;
+    padding: 0 10px;
+    margin: 0;
+    margin-left: 15px;
+}
+
 .imgPerfil {
     display: block;
-    height: 100%;
+    height: 40px;
+    border-radius: 50%;
+    position: relative;
+    top: 10px;
 }
- .listNav{
-    margin: auto !important;
-   }
+
+.initialLetter {
+
+    background-color: orange;
+    position: relative;
+    top: 15px;
+    border-radius: 50%;
+    text-align: center;
+    padding: 3.5px;
+    width: 35px;
+    font-size: 23px;
+    font-weight: bold;
+    color: white;
+    text-transform: uppercase;
+
+
+}
+
+.listNav {
+    margin: auto;
+    font-weight: bold;
+    letter-spacing: 2px;
+    font-family: "Gamer4";
+    letter-spacing: 3px;
+
+}
+.nav-item::before {
+    content: "...";
+    display: block;
+    height: 1px;
+    width: 1px;
+    position: relative;
+    top: 20px;
+    left: 36%;
+    color: #737373;
+
+
+
+}
+
+.prueba::after {
+    content: "";
+    visibility: hidden;
+
+    margin: auto;
+
+}
+@media only screen and (max-width: 990px)  {
+    .nav-item::before {
+        content: '';
+    }
+}
+.listNav li a:hover {
+    color: #b96e0b;
+    text-decoration: line-through;
+    text-shadow: 0 0 5px #b96e0b, 0 0 25px #b96e0b, 0 0 50px #b96e0b, 0 0 100px #b96e0b, 0 0 200px #b96e0b;;
+}
+
+.navMenu {
+    box-shadow: -1px 10px 5px 0px rgba(0, 0, 0, 0.75);
+    -webkit-box-shadow: -1px 10px 5px 0px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: -1px 10px 5px 0px rgba(0, 0, 0, 0.75);
+    font-family: "Gamer4";
+    color: #737373;
+}
+.Menu{
+    list-style: none;
+    background-color: red;
+    padding: 5px;
+    border-radius: 5px;
+    margin-top: 20px;
+    margin-right: 150px;
+}
+.logo {
+  font-family:"Gamer5";
+  font-size:30px;
+  font-weight: bold;
+  letter-spacing:5px;
+  color:#b96e0b;
+  text-shadow: 4px 4px 2px rgba(0,0,0,0.6);
+}
+.listNav .nav-item {
+  letter-spacing: 3px;
+}

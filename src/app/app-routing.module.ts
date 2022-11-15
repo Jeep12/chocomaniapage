@@ -7,6 +7,8 @@ import { RegistrarUsuarioComponent } from './components/registrar-usuario/regist
 import { RecuperarPasswordComponent } from './components/recuperar-password/recuperar-password.component';
 import { VerificarCorreoComponent } from './components/verificar-correo/verificar-correo.component';
 import { AuthGuardian } from './utils/auth-guardian';
+import { ProductsComponent } from './components/products/products.component';
+import { ContactoComponent } from './components/contacto/contacto.component';
 
 
 const routes: Routes = [
@@ -26,6 +28,10 @@ const routes: Routes = [
     component:VerificarCorreoComponent
   },
   {
+    path:'contacto',
+    component:ContactoComponent
+  },
+  {
     path:'recuperar-password',
     component:RecuperarPasswordComponent
   },
@@ -33,7 +39,12 @@ const routes: Routes = [
     path:'dashboard',
     component:DashboardComponent
   },
-  
+  {
+    path:'products',
+    component:ProductsComponent
+  },
+
+
   {
     path:'**',
     component:DashboardComponent
@@ -47,7 +58,7 @@ const routes: Routes = [
   imports: [
     CommonModule,
     RouterModule.forRoot(routes),
-    
+
   ],
   exports:[RouterModule]
 })

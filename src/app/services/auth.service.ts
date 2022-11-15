@@ -7,6 +7,7 @@ import { FireBaseErrorService } from './fire-base-error.service';
 import firebase from "firebase/compat/app";
 import "firebase/compat/auth";
 import { User } from '../Interfaces/User';
+import { UsuariosService } from './usuarios.service';
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +19,8 @@ export class AuthService {
     private router: Router,
     private toastr: ToastrService,
     private fireBaseError: FireBaseErrorService,
-    private cookies: CookieService
+    private cookies: CookieService,
+    private us:UsuariosService
   ) {
     this.afAuth.authState.subscribe(user => {
       this.userMail = user?.email;
@@ -26,10 +28,15 @@ export class AuthService {
   }
 
 
-  //REGISTRO 
+  //REGISTRO
   register(email: string, password: string) {
     this.afAuth.createUserWithEmailAndPassword(email, password).then((user) => {
       this.verifyMail();
+      if(user){
+        this.us.setUserFS(user);
+      }else {
+        console.log("Error");
+      }
     }).catch((error) => {
 
       this.toastr.error(this.fireBaseError.fireBaseError(error.code));
@@ -45,7 +52,7 @@ export class AuthService {
       .then((user) => user?.sendEmailVerification())
       .then(() => {
         this.toastr.info("Le enviamos un correo electronico para verificar su cuenta", "Verificar Correo");
-        this.router.navigate(['/login']);
+        this.router.navigate(['/verificar-correo']);
       })
   }
 
@@ -56,17 +63,9 @@ export class AuthService {
       //console.log(user);
       if (user.user?.emailVerified) {
         this.toastr.success("Bienvenido");
-        this.router.navigate(['/dashboard']);
-        let displayName:User | any = user.user.displayName;
-        let email:User | any = user.user.email;
-        let uid:User | any = user.user.uid;
-        let image:User | any = user.user.photoURL;
+        this.us.getUserFireStore(user.user.email);
 
-        this.cookies.set('uid', uid);
-        this.cookies.set('image', image);
-        this.cookies.set('name', displayName);
-        this.cookies.set('userMail', email);
-        console.log(user);
+
 
       } else {
         console.log(user);
@@ -92,11 +91,8 @@ export class AuthService {
   // DESTRUIR SESION
   logout() {
     this.afAuth.signOut().then(() => {
-      this.router.navigate(['/login']);
-      this.cookies.delete('userMail');
-      this.cookies.delete('uid');
-      this.cookies.delete('image');
-      this.cookies.delete('name');
+      this.router.navigate(['/dashborad']);
+      localStorage.removeItem('usuario');
     })
   }
   //SI ESTA LOGEADO
@@ -110,16 +106,8 @@ export class AuthService {
   }
   loginWithGoogle() {
     return firebase.auth().signInWithPopup(new firebase.auth.GoogleAuthProvider).then(res => {
-      localStorage.setItem('token', JSON.stringify(res.user?.uid));
-      let displayName:User | any = res.user?.displayName;
-      let email:User | any = res.user?.email;
-      let uid:User | any = res.user?.uid;
-      let image:User | any = res.user?.photoURL;
-
-      this.cookies.set('uid', uid);
-      this.cookies.set('image', image);
-      this.cookies.set('name', displayName);
-      this.cookies.set('userMail', email);
+      //Aca obtengo el usuario creado con google, y updateUserFs lo va actualizar si existe y si no lo va a crear
+      this.us.setUserFS(res);
 
       this.router.navigate(['/']);
     }, err => {
@@ -137,7 +125,9 @@ export class AuthService {
 }
 
 
-
+  getUid(){
+    return this.afAuth.authState;
+  }
 
 
 }

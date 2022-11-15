@@ -5,6 +5,7 @@ import { User } from 'src/app/Interfaces/User';
 import { AuthService } from 'src/app/services/auth.service';
 import { LoadScriptsService } from 'src/app/services/load-scripts.service';
 import { CookieService } from 'ngx-cookie-service';
+import { UsuariosService } from 'src/app/services/usuarios.service';
 
 @Component({
   selector: 'app-header',
@@ -12,35 +13,53 @@ import { CookieService } from 'ngx-cookie-service';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-   image: any;
-  
+  usuario: any = {
+    id:"",
+    data:{}
+  }
+
+  isAdmin: boolean = false;
   constructor(
-    private authService:AuthService,
-    private loadScripts:LoadScriptsService,
-    private cookies:CookieService,
-    private afAuth:AngularFireAuth
-    
-    ) { 
-      this.loadScripts.load(["header/header"]);
-      this.afAuth.authState.subscribe(user=>{
-          this.image=user?.photoURL;
-      })
-    }
+    private authService: AuthService,
+    private loadScripts: LoadScriptsService,
+    private cookies: CookieService,
+    private us: UsuariosService,
+    private afAuth: AngularFireAuth
+
+  ) {
+
+
+
+    this.loadScripts.load(["header/header"]);
+
+  }
 
   ngOnInit(): void {
+    this.afAuth.onAuthStateChanged(user => {
+      let email = user?.email;
+      this.us.getUserFireStore(email).then(userfs => {
+        //cargo el usuario
+        this.usuario.id = email;
+        this.usuario.data = userfs;
+        console.log(this.usuario.id);
+
+      })
+    })
+
 
   }
-  logout(){
+  logout() {
+    this.usuario.id = "";
+    this.usuario.data = {access:0};
     this.authService.logout();
   }
-  islogged(){
-  return this.authService.isLogged();
+  islogged() {
+    return this.authService.isLogged();
   }
-  logg(){
-    alert(this.authService.isLogged());
+  pruebaheader(){
+    let local:string | any = localStorage.getItem('usuario');
+    let localJson = JSON.parse(local);
+    console.log(localJson);
   }
-
-  
-  
 
 }
