@@ -10,6 +10,11 @@ export class DataServiceService {
 
   }
 
+  public getAll(){
+    const url = "https://635761e19243cf412f97ac48.mockapi.io/usuarios";
+    return this.httpClient.get(url);
+  }
+
 
 
 }

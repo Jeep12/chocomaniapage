@@ -33,6 +33,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
+import { ControladminComponent } from './components/controladmin/controladmin.component';
 
 
 @NgModule({
@@ -50,6 +51,7 @@ import { provideFirestore,getFirestore } from '@angular/fire/firestore';
     FooterComponent,
     ModalCartComponent,
     ContactoComponent,
+    ControladminComponent,
 
 
   ],

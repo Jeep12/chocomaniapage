@@ -9,6 +9,7 @@ import { VerificarCorreoComponent } from './components/verificar-correo/verifica
 import { AuthGuardian } from './utils/auth-guardian';
 import { ProductsComponent } from './components/products/products.component';
 import { ContactoComponent } from './components/contacto/contacto.component';
+import { ControladminComponent } from './components/controladmin/controladmin.component';
 
 
 const routes: Routes = [
@@ -43,6 +44,11 @@ const routes: Routes = [
     path:'products',
     component:ProductsComponent
   },
+  {
+    path:'paneladmin',
+    component:ControladminComponent
+  },
+
 
 
   {
