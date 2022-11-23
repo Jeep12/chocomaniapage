@@ -7,7 +7,6 @@ import { AppRoutingModule } from './app-routing.module';
 import {AngularFireModule} from '@angular/fire/compat';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { DataServiceService } from './services/data-service.service';
 
 //COMPONENTES
 import { AppComponent } from './app.component';
@@ -34,6 +33,8 @@ import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import { ControladminComponent } from './components/controladmin/controladmin.component';
+import { AddNewsComponent } from './components/add-news/add-news.component';
+import { AddnewsService } from './services/addnews.service';
 
 
 @NgModule({
@@ -52,6 +53,7 @@ import { ControladminComponent } from './components/controladmin/controladmin.co
     ModalCartComponent,
     ContactoComponent,
     ControladminComponent,
+    AddNewsComponent,
 
 
   ],
@@ -79,7 +81,7 @@ import { ControladminComponent } from './components/controladmin/controladmin.co
     AuthGuardian,
     CookieService,
     LoadScriptsService,
-    DataServiceService,
+    AddnewsService,
 
   ],
   bootstrap: [AppComponent]

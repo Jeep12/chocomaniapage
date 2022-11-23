@@ -1,0 +1,15 @@
+.formAddNew {
+  width: 300px;
+}
+.formAddNew input {
+  border-bottom:2px solid #B96E0B ;
+  width: 100%;
+}
+.formAddNew textarea {
+  width: 100%;
+}
+.formAddNew button {
+  width: 100%;
+  border: none;
+  padding: 10px;
+}

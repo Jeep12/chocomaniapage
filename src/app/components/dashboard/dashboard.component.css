@@ -1,10 +1,30 @@
 .containerDashboard {
-    
+
     background-color: #ECECEC;
     width: 100%;
-  
+
 }
 .row {
     padding: 0;
     margin: 0;
+}
+.containerNotices {
+  height: 700px;
+  overflow-x: scroll;
+}
+.headerNotice {
+  font-size: 15px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+.bodyNotice {
+  border-top: 2px solid black;
+  width: 80%;
+  margin: auto;
+  min-height: 200px;
+}
+.autor {
+  position: relative;
+  bottom: 0px;
 }

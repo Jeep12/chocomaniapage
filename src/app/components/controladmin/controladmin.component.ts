@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { DataServiceService } from 'src/app/services/data-service.service';
 
 @Component({
   selector: 'app-controladmin',
@@ -8,7 +7,7 @@ import { DataServiceService } from 'src/app/services/data-service.service';
 })
 export class ControladminComponent implements OnInit {
   public archivos: any = [];
-  constructor(private dataService:DataServiceService) { }
+  constructor() { }
 
   ngOnInit(): void {
   }
@@ -30,11 +29,7 @@ export class ControladminComponent implements OnInit {
 
     }
   }
-  pruebahttp(){
-    this.dataService.getAll().subscribe(e=>{
-      console.log(e);
-    });
-  }
+
 
 
 

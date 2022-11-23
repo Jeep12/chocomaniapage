@@ -1,0 +1,22 @@
+<div class="containerAddNews">
+
+  <form class="formAddNew" (ngSubmit)="addNew()" [formGroup]="notices">
+    <label for="">Titulo</label>
+
+    <input type="text"  formControlName="titulo">
+
+    <label for="">Noticia</label>
+
+    <textarea  cols="30" rows="10" formControlName="noticia"></textarea  >
+
+    <label for="">Autor</label>
+
+    <input type="text"  formControlName="autor">
+    <hr>
+    <button>Postear</button>
+
+  </form>
+  <button (click)="traerNotices()">Traer</button>
+
+
+</div>

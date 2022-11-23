@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
-import { DataServiceService } from 'src/app/services/data-service.service';
 import { UsuariosService } from 'src/app/services/usuarios.service';
 
 @Component({
@@ -11,7 +10,7 @@ import { UsuariosService } from 'src/app/services/usuarios.service';
 export class ContactoComponent implements OnInit {
   cuadroNombre:string= "";
   usuariox:any;
-  constructor(private auth:AuthService,private dataService:DataServiceService,private userService:UsuariosService) {
+  constructor(private auth:AuthService,private userService:UsuariosService) {
 
    }
 

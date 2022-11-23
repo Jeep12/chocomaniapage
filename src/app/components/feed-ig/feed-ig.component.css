@@ -1,0 +1,10 @@
+.containerFeedIG {
+  width: 80%;
+  margin: auto;
+  text-align: center;
+  font-size: 25px;
+}
+iframe {
+  margin: auto;
+  display: block;
+}

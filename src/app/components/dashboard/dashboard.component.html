@@ -1,32 +1,41 @@
 <div class="containerDashboard">
-    <app-carousel-products></app-carousel-products>
-    <br><br>
-    <div class="row">
-        <div class="col-sm-8">
-            <h1>Últimas Noticias</h1>
+  <app-carousel-products></app-carousel-products>
+  <br><br>
+  <div class="row">
+    <div class="col-sm-8 containerNotices">
+      <h1>Últimas Noticias</h1>
+      <hr>
+      <div class="notice" *ngFor="let notice of notices">
+        <div class="headerNotice">
+          <div>
+            <h3>
 
-           
-            <h5>Noticia 1</h5>
-            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Modi suscipit adipisci consectetur placeat, ipsa quidem debitis voluptates, consequatur exercitationem natus aperiam. Provident rerum harum cupiditate, soluta rem vero tempora cumque?</p>
-            <hr>
-            <hr>
-            <h5>Noticia 2</h5>
-            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Modi suscipit adipisci consectetur placeat, ipsa quidem debitis voluptates, consequatur exercitationem natus aperiam. Provident rerum harum cupiditate, soluta rem vero tempora cumque?</p>
-            <hr>
-            <hr>
-            <h5>Noticia 3</h5>
-            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Modi suscipit adipisci consectetur placeat, ipsa quidem debitis voluptates, consequatur exercitationem natus aperiam. Provident rerum harum cupiditate, soluta rem vero tempora cumque?</p>
-            <hr>
-            <hr>
-            <h5>Noticia 4</h5>
-            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Modi suscipit adipisci consectetur placeat, ipsa quidem debitis voluptates, consequatur exercitationem natus aperiam. Provident rerum harum cupiditate, soluta rem vero tempora cumque?</p>
-          
+              {{notice.titulo}}
+            </h3>
+          </div>
+
+          <div>
+            {{notice.fecha}}
+          </div>
+          <div>
+            <button *ngIf="usuario.data.access == 1 &&  islogged()==true" (click)="deleteNotice(notice)">X</button>
+          </div>
         </div>
-        <div class="col-sm-4 feedIg">
-                <h5>Nuestro Instagram</h5>
-                <app-feed-ig></app-feed-ig>
-                
+        <div class="bodyNotice">
+          {{notice.notice}}
+          <hr>
+          <p class="autor">
+           Publicado por: {{notice.autor}}
+          </p>
         </div>
+        <hr>
+      </div>
+
     </div>
+    <div class="col-sm-4 feedIg">
+      <app-feed-ig></app-feed-ig>
+
+    </div>
+  </div>
 
 </div>

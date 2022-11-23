@@ -41,7 +41,7 @@ export class HeaderComponent implements OnInit {
         //cargo el usuario
         this.usuario.id = email;
         this.usuario.data = userfs;
-        console.log(this.usuario.id);
+        console.log(this.usuario.data.access);
 
       })
     })

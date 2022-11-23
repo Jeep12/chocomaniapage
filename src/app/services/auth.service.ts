@@ -20,7 +20,7 @@ export class AuthService {
     private toastr: ToastrService,
     private fireBaseError: FireBaseErrorService,
     private cookies: CookieService,
-    private us:UsuariosService
+    private us: UsuariosService
   ) {
     this.afAuth.authState.subscribe(user => {
       this.userMail = user?.email;
@@ -28,13 +28,13 @@ export class AuthService {
   }
 
 
-  //REGISTRO
+  //REGISTRO DE FIREBASE CON USEREMAIL Y PASSWORD
   register(email: string, password: string) {
     this.afAuth.createUserWithEmailAndPassword(email, password).then((user) => {
       this.verifyMail();
-      if(user){
+      if (user) {
         this.us.setUserFS(user);
-      }else {
+      } else {
         console.log("Error");
       }
     }).catch((error) => {
@@ -43,11 +43,13 @@ export class AuthService {
     });
   }
 
-  //VERIFICAR MAIL
+  //El usuario de firebase tiene metodos y propiedades, una es si el email se verifico o no.
+  //y  este metodo se encarga de mandar un email de verificacion
   verifyMail() {
     this.afAuth.currentUser.then(user => {
-      user?.sendEmailVerification()
-    })
+      user?.sendEmailVerification()})
+
+
     this.afAuth.currentUser
       .then((user) => user?.sendEmailVerification())
       .then(() => {
@@ -57,7 +59,8 @@ export class AuthService {
   }
 
 
-  //INCIIAR SESION
+  //Para iniciar sesion se comprueba si el email este verificado o no.
+  //user.user?.emailVerified <-- esta propiedad
   login(email: string, password: string) {
     this.afAuth.signInWithEmailAndPassword(email, password).then((user) => {
       //console.log(user);
@@ -114,18 +117,18 @@ export class AuthService {
       alert(err.message);
     })
   }
-  loginWithFacebook(){
-    return firebase.auth().signInWithPopup(new firebase.auth.FacebookAuthProvider).then(res =>{
-        localStorage.setItem('token',JSON.stringify(res.user?.uid));
-        this.router.navigate(['/']);
+  loginWithFacebook() {
+    return firebase.auth().signInWithPopup(new firebase.auth.FacebookAuthProvider).then(res => {
+      localStorage.setItem('token', JSON.stringify(res.user?.uid));
+      this.router.navigate(['/']);
 
-    },err=>{
-        alert(err.message);
+    }, err => {
+      alert(err.message);
     })
-}
+  }
 
 
-  getUid(){
+  getUid() {
     return this.afAuth.authState;
   }
 
