@@ -8,7 +8,7 @@ import { UsuariosService } from './services/usuarios.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-
+  title = "";
 
 
   constructor(private afAuth:AngularFireAuth,private usuario:UsuariosService){

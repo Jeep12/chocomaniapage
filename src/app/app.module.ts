@@ -65,13 +65,13 @@ import { StoreService } from './services/store.service';
     //Modulo reactivo, distinta manera de obtener los datos de un formlario "FormGroup"
     ReactiveFormsModule,
     //Inicializo la aplicacion en firebase version angular, las propiedades que se envian por paremetro se obtienen del mismo firebase (en la web de firebase)
-    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireModule.initializeApp(environment.firebase),
     ToastrModule.forRoot(),
     BrowserAnimationsModule,
     NgbModule,
     HttpClientModule,
     // ng add @angular/fire configurar firestore dependencia
-    provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideFirestore(() => getFirestore()),
 
 
