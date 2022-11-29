@@ -61,31 +61,5 @@ export class UsuariosService {
 
   }
 
-  async getUserFireStore(email: any): Promise<Observable<any>> {
-
-    let usuario: any = {
-      id: "",
-      data: {}
-    }
-
-    const ref = collection(this.db, 'users');
-    const q = query(ref, where("email", "==", email));
-
-    const querySnapshot = await getDocs(q);
-    querySnapshot.forEach((doc) => {
-      usuario.id = doc.id;
-      usuario.data = doc.data();
-      localStorage.setItem("usuario", JSON.stringify(doc.data()));
-    });
-
-    return usuario;
-
-  }
-
-
-
-
-
-
 
 }

@@ -35,6 +35,7 @@ import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import { ControladminComponent } from './components/controladmin/controladmin.component';
 import { AddNewsComponent } from './components/add-news/add-news.component';
 import { AddnewsService } from './services/addnews.service';
+import { StoreService } from './services/store.service';
 
 
 @NgModule({
@@ -82,6 +83,7 @@ import { AddnewsService } from './services/addnews.service';
     CookieService,
     LoadScriptsService,
     AddnewsService,
+    StoreService
 
   ],
   bootstrap: [AppComponent]

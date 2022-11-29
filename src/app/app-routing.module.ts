@@ -18,11 +18,11 @@ const routes: Routes = [
   },
   {
     path:'login',
-    component:LoginComponent,canActivate:[AuthGuardian]
+    component:LoginComponent
   },
   {
     path:'registrar-usuario',
-    component:RegistrarUsuarioComponent,canActivate:[AuthGuardian]
+    component:RegistrarUsuarioComponent
   },
   {
     path:'verificar-correo',
@@ -48,7 +48,6 @@ const routes: Routes = [
     path:'paneladmin',
     component:ControladminComponent
   },
-
 
 
   {

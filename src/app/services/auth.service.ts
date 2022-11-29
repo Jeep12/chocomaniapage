@@ -66,7 +66,7 @@ export class AuthService {
       //console.log(user);
       if (user.user?.emailVerified) {
         this.toastr.success("Bienvenido");
-        this.us.getUserFireStore(user.user.email);
+
 
 
 

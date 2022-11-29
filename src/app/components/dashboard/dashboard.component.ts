@@ -31,13 +31,7 @@ export class DashboardComponent implements OnInit {
 
     this.afAuth.onAuthStateChanged(user => {
       let email = user?.email;
-      this.us.getUserFireStore(email).then(userfs => {
-        //cargo el usuario
-        this.usuario.id = email;
-        this.usuario.data = userfs;
-        console.log(this.usuario.id);
 
-      })
     })
 
 
